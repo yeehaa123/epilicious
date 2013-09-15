@@ -20,10 +20,11 @@ describe Epilicious::Fetcher do
   end
 
   context 'private methods' do
-    let(:recipes_page) { fetcher.send(:fetch_recipes_page, url) }
+
+    let(:recipes_page) { fetcher.send(:fetch_page, url) }
     let(:url) { "http://www.epicurious.com/articlesguides/bestof/toprecipes/bestburgerrecipes" }
                         
-    context '#fetch_recipes_page' do
+    context '#fetch_page' do
       it 'should return a nokogiri document' do
         recipes_page.must_be_instance_of Nokogiri::HTML::Document
       end

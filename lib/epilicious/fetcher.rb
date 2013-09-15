@@ -5,21 +5,22 @@ require 'pry'
 module Epilicious
 
   class Fetcher
-    attr_accessor :recipes
+    attr_reader :recipes
 
     def initialize
       @recipes ||= []
+      @base_url = "http://www.epicurious.com"
     end
 
     def fetch_recipes(url = default_url)
-      recipes_page = fetch_recipes_page(url)
+      recipes_page = fetch_page(url)
       recipes_urls = parse_recipes_page(recipes_page)
-      self.recipes << Recipe.new("pasta")
-    end
+      @recipes << Recipe.new("pasta")
+    end 
     
     private
 
-    def fetch_recipes_page(url)
+    def fetch_page(url)
       Nokogiri::HTML(open(url))
     end
 
@@ -28,7 +29,7 @@ module Epilicious
     end
 
     def default_url
-      "http://www.epicurious.com/articlesguides/bestof/toprecipes/bestburgerrecipes"
+      "#{@base_url}/articlesguides/bestof/toprecipes/bestburgerrecipes"
     end
   end
 end
