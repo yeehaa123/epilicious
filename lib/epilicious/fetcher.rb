@@ -5,15 +5,16 @@ require 'pry'
 module Epilicious
 
   class Fetcher
-    attr_accessor :recipe_urls
+    attr_accessor :recipes
 
     def initialize
-      @recipe_urls ||= []
+      @recipes ||= []
     end
 
     def fetch_recipes(url = default_url)
       recipes_page = fetch_recipes_page(url)
-      self.recipe_urls = parse_recipes_page(recipes_page)
+      recipes_urls = parse_recipes_page(recipes_page)
+      self.recipes << Recipe.new("pasta")
     end
     
     private
@@ -31,3 +32,5 @@ module Epilicious
     end
   end
 end
+
+Recipe = Struct.new(:name)
