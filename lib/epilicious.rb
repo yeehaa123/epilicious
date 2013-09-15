@@ -2,5 +2,7 @@ require "epilicious/version"
 require "epilicious/fetcher"
 
 module Epilicious
-  # Your code goes here...
+  def self.recipes
+    Fetcher.new.fetch_recipes
+  end
 end

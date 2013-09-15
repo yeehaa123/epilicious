@@ -14,12 +14,13 @@ module Epilicious
       @base_url = "http://www.epicurious.com"
     end
 
-    def fetch_recipes(url = default_index_url)
-      recipes_page = fetch_page(url)
+    def fetch_recipes(index_url = default_index_url)
+      recipes_page = fetch_page(index_url)
       recipes_urls = parser.parse_recipes_page(recipes_page)
       recipes = recipes_urls.map do |url|
         fetch_recipe(url)
       end
+      recipes
     end 
 
     def fetch_recipe(url = default_recipe_url)

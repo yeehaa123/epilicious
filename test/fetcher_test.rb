@@ -5,6 +5,7 @@ describe Epilicious::Fetcher do
 
   context '#fetch_recipes' do
     let(:recipes) { fetcher.fetch_recipes }
+
     it 'should return a list of recipes' do
       recipes.length.must_equal 15
       recipes.last.must_be_instance_of Epilicious::Recipe
@@ -12,8 +13,9 @@ describe Epilicious::Fetcher do
   end
 
   context '#fetch_recipe' do
+    let(:recipe) { fetcher.fetch_recipe }
     it' should return a recipe' do
-      fetcher.fetch_recipe.must_be_instance_of Epilicious::Recipe
+      recipe.must_be_instance_of Epilicious::Recipe
     end
   end
 
