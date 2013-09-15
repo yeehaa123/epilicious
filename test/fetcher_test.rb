@@ -13,16 +13,22 @@ describe Epilicious::Fetcher do
     end
 
     it 'should contain recipes' do
+      skip
       fetcher.fetch_recipes.each do |recipe|
         recipe.must_be_instance_of Recipe
       end
     end
   end
 
-  context 'private methods' do
+  context '#fetch_recipe' do
+    it' should return a recipe' do
+      fetcher.fetch_recipe.must_be_instance_of Recipe
+    end
+  end
 
+  context 'private methods' do
+    let(:url) { "/articlesguides/bestof/toprecipes/bestburgerrecipes" }
     let(:recipes_page) { fetcher.send(:fetch_page, url) }
-    let(:url) { "http://www.epicurious.com/articlesguides/bestof/toprecipes/bestburgerrecipes" }
                         
     context '#fetch_page' do
       it 'should return a nokogiri document' do
