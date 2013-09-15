@@ -10,13 +10,19 @@ module Epilicious
       @recipe_urls ||= []
     end
 
-    def fetch_recipes
-      fetch_recipes_index
+    def fetch_recipes(url = default_url)
+      fetch_recipes_index(url)
       recipe_urls << 'test' 
     end
     
-    def fetch_recipes_index
+    private
 
+    def fetch_recipes_index(url)
+      Nokogiri::HTML(open(url))
+    end
+
+    def default_url
+      "http://www.epicurious.com/articlesguides/bestof/toprecipes/bestburgerrecipes"
     end
   end
 end
