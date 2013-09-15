@@ -17,7 +17,9 @@ module Epilicious
     def fetch_recipes(url = default_index_url)
       recipes_page = fetch_page(url)
       recipes_urls = parser.parse_recipes_page(recipes_page)
-      @recipes << Recipe.new(name: "pasta")
+      recipes = recipes_urls.map do |url|
+        fetch_recipe(url)
+      end
     end 
 
     def fetch_recipe(url = default_recipe_url)
