@@ -31,7 +31,7 @@ module Epilicious
 
     def instructions(page)
       preparation = page.css("div#preparation.instructions p")
-      preparation.map {|i| i.text}
+      preparation.map {|i| i.text.strip.gsub("\n", ' ').squeeze(' ')}
     end
   end
 end
