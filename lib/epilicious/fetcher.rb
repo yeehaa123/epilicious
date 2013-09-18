@@ -1,6 +1,5 @@
 require 'open-uri'
 require 'nokogiri'
-require 'pry'
 
 require_relative './parser'
 require_relative './recipe'
