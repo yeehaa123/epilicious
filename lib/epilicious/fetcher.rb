@@ -34,8 +34,6 @@ module Epilicious
       Nokogiri::HTML(open(@base_url + url))
     end
 
-
-
     def parser
       @parser ||= Parser.new
     end
