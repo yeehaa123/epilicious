@@ -2,7 +2,7 @@ module Epilicious
   class Parser
 
     def parse_recipes_page(page)
-      page.css('#artInner .recipe_result_right a').map {|link| link ['href'] }
+      page.css('.recipe_result_right a').map {|link| link ['href'] }
     end
 
     def parse_recipe_page(page)
