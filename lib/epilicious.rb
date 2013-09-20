@@ -8,5 +8,5 @@ module Epilicious
 end
 
 def recipes_url
-  "/articlesguides/bestof/toprecipes/bestburgerrecipes"
+  "http://www.epicurious.com/recipesmenus/whatsnew/recipes"
 end
