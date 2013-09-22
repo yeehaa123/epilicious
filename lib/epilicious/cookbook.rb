@@ -7,6 +7,8 @@ module Epilicious
   class CookBook
     
     def self.redis
+      Redis.new(:host => uri.host, :port => uri.port, :password => uri.password)
+    rescue
       Redis.new
     end
 
@@ -38,6 +40,10 @@ module Epilicious
 
     def self.day
       24 * 60 * 60
+    end
+
+    def self.uri
+      URI.parse(ENV["REDISCLOUD_URL"])
     end
 
   end
