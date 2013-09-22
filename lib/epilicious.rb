@@ -4,10 +4,10 @@ require "epilicious/cookbook"
 
 module Epilicious
   def self.recipes(url = recipes_url)
-    Fetcher.new.fetch_recipes(url)
+    CookBook.recipes(url)
   end
-end
 
-def recipes_url
-  "http://www.epicurious.com/recipesmenus/whatsnew/recipes"
+  def self.recipes_url
+    "http://www.epicurious.com/recipesmenus/whatsnew/recipes"
+  end
 end

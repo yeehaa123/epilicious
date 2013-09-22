@@ -18,6 +18,8 @@ describe Epilicious::CookBook do
     it "must return a list of recipe objects" do 
       recipes.must_be_instance_of Array
       recipes.first.must_be_instance_of Epilicious::Recipe
+      cookbook.redis.ttl("test").must_be :<=, day
+      cookbook.redis.ttl("test").must_be :>=, day - 10
     end
 
     it "must fetch a list recipes when url does not exits" do
@@ -25,5 +27,9 @@ describe Epilicious::CookBook do
       cookbook.recipes("bla").must_be_instance_of Array
       cookbook.recipes("bla").first.must_be_instance_of Epilicious::Recipe
     end
+  end
+  
+  def day
+    24 * 60 * 60
   end
 end
