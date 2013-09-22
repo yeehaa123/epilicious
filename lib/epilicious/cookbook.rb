@@ -19,6 +19,9 @@ module Epilicious
       end
 
       JSON.parse(recipe_vault).map do |recipe|
+        recipe.keys.each do |key|
+            recipe[(key.to_sym rescue key) || key] = recipe.delete(key)
+        end
         Recipe.new(recipe)
       end
     end
