@@ -31,23 +31,11 @@ module Epilicious
     private
 
     def fetch_page(url)
-      if url =~ /http\:\/\/.*\//
-        Nokogiri::HTML(open(url))
-      else
-        Nokogiri::HTML(open(@base_url + url))
-      end
+      Nokogiri::HTML(open(@base_url + url))
     end
 
     def parser
       @parser ||= Parser.new
     end
-  end
-end
-
-
-
-class Recipe
-  def initialize(args)
-    @name = args[:name]
   end
 end

@@ -20,9 +20,7 @@ module Epilicious
       end
 
       JSON.parse(recipe_vault).map do |recipe|
-        recipe.keys.each do |key|
-            recipe[(key.to_sym rescue key) || key] = recipe.delete(key)
-        end
+        Utilities.symbolize_keys(recipe)
         Recipe.new(recipe)
       end
     end
@@ -45,6 +43,5 @@ module Epilicious
     def self.uri
       URI.parse(ENV["REDISCLOUD_URL"])
     end
-
   end
 end

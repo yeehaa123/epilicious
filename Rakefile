@@ -16,3 +16,8 @@ Rake::TestTask.new(:recipe) do |t|
   t.libs << "test"
   t.test_files = FileList["test/**/recipe_test.rb"]
 end
+
+Rake::TestTask.new(:utilities) do |t|
+  t.libs << "test"
+  t.test_files = FileList["test/**/utilities_test.rb"]
+end

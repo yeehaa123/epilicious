@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'pry'
 
 describe Epilicious::CookBook do
   let(:cookbook) { Epilicious::CookBook }
