@@ -1,5 +1,6 @@
 require "epilicious/version"
 require "epilicious/fetcher"
+require "epilicious/cookbook"
 
 module Epilicious
   def self.recipes(url = recipes_url)
