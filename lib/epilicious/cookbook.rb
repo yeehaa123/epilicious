@@ -30,10 +30,15 @@ module Epilicious
       url = cookbook.keys.first
       cookbook = cookbook[url].to_json
       redis.set(url, cookbook)
+      redis.expire(url, day)
     end
 
     def self.fetcher(url)
       Fetcher.new.fetch_recipes(url)
+    end
+
+    def self.day
+      24 * 60 * 60
     end
 
   end
